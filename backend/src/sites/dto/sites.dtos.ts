@@ -1,5 +1,5 @@
-import { IsNotEmpty, IsUrl, MinLength } from "class-validator";
-
+import { IsUnique, isExistDb } from "@youba/nestjs-dbvalidator";
+import { IsNotEmpty, IsUrl, MinLength, Validate } from "class-validator";
 
 export class CreateSiteDto {
     @IsNotEmpty()

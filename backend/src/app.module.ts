@@ -7,6 +7,8 @@ import { SitesModule } from './sites/sites.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import entities from './typeorm';
+import { DbValidatorsModule } from '@youba/nestjs-dbvalidator';
+
 
 
 @Module({
