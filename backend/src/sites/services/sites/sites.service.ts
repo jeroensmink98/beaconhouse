@@ -19,7 +19,7 @@ export class SitesService {
         return this.siteRepository.find();
     }
 
-    findSiteById(id: number): Promise<Site> {
+    findSiteById(id: string): Promise<Site> {
         return this.siteRepository.findOneBy({ "siteId": id });
     }
 }

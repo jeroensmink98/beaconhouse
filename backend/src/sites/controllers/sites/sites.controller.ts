@@ -13,7 +13,7 @@ export class SitesController {
     }
 
     @Get('id/:id')
-    async findSiteById(@Param('id', ParseIntPipe) id: number) {
+    async findSiteById(@Param('id', ParseIntPipe) id: string) {
         return await this.sitesService.findSiteById(id);
     }
 
