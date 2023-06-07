@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CreateSiteDto } from 'src/sites/dto/sites.dtos';
 import { SitesService } from 'src/sites/services/sites/sites.service';
 
@@ -13,7 +13,7 @@ export class SitesController {
     }
 
     @Get('id/:id')
-    async findSiteById(@Param('id', ParseIntPipe) id: string) {
+    async findSiteById(@Param('id') id: string) {
         return await this.sitesService.findSiteById(id);
     }
 

@@ -1,10 +1,21 @@
-import { Controller } from "@nestjs/common";
+import { Controller, Get, Param } from "@nestjs/common";
+import { WorkspacesService } from "../services/workspaces.service";
 
 @Controller('workspaces')
 export class WorkspacesController {
-    constructor() {
-        // @todo Inject service
+    constructor(
+        private readonly workspacesService: WorkspacesService,
+    ) {
+
     }
 
-    // @todo Add routes
+    @Get()
+    async getWorkspaces() {
+        return await this.workspacesService.getWorkspaces();
+    }
+
+    @Get('id/:id')
+    async getWorkspaceById(@Param('id') id: string) {
+        return await this.workspacesService.getWorkspaceById(id);
+    }
 }
