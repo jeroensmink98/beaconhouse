@@ -8,6 +8,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import entities from './typeorm';
 import { DbValidatorsModule } from '@youba/nestjs-dbvalidator';
+import { WorkspacesModule } from './workspaces/workspaces.module';
 
 
 
@@ -16,6 +17,7 @@ import { DbValidatorsModule } from '@youba/nestjs-dbvalidator';
   providers: [AppService, DockerService],
   imports: [
     SitesModule,
+    WorkspacesModule,
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -26,6 +28,7 @@ import { DbValidatorsModule } from '@youba/nestjs-dbvalidator';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
+        // migrate all entities in the entities array
         entities: entities,
         // @TODO: Turn this off in production
         synchronize: true,
