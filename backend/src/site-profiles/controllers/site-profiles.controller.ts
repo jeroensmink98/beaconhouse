@@ -30,7 +30,7 @@ export class SiteProfilesController {
     @Get()
     async getSiteProfiles(@Param('workspaceId') workspaceId: string) {
         // Add logic to fetch only SiteProfiles that belong to the 'workspaceId'
-        return await this.siteProfilesService.getSiteProfiles();
+        return await this.siteProfilesService.getSiteProfiles(workspaceId);
     }
 
     @Get(':siteProfileId')

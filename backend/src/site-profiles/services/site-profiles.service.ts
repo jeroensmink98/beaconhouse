@@ -25,8 +25,12 @@ export class SiteProfilesService {
     }
 
     // Read all
-    async getSiteProfiles(): Promise<SiteProfile[]> {
-        return await this.siteProfileRepository.find();
+    async getSiteProfiles(workspaceId: string): Promise<SiteProfile[]> {
+        return await this.siteProfileRepository
+            .createQueryBuilder("siteProfile")
+            .innerJoin("siteProfile.workspace", "workspace")
+            .where("workspace.workspace_id = :workspaceId", { workspaceId })
+            .getMany();
     }
 
     // Read one

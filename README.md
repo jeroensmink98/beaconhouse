@@ -21,3 +21,7 @@ testRun:
 3. Create entity folder, add `services` and `controllers`, `module` and `dto`
 4. Add each component to the entity, add API routes and implement logic in `service` 
 5. When not created with the CLI add entity to `app.module`
+
+## Todo:
+
+We can now create workspaces and then create siteProfiles in these workspaces. Next we need to be able to createTest runs
