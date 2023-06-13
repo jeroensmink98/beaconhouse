@@ -10,5 +10,6 @@ import { WorkspacesService } from './services/workspaces.service';
     ],
     controllers: [WorkspacesController],
     providers: [WorkspacesService],
+    exports: [WorkspacesService],
 })
 export class WorkspacesModule { }

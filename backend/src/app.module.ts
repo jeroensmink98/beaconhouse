@@ -3,12 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DockerService } from './docker/docker.service';
 import { DockerController } from './docker/docker.controller';
-import { SitesModule } from './sites/sites.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import entities from './typeorm';
 import { DbValidatorsModule } from '@youba/nestjs-dbvalidator';
 import { WorkspacesModule } from './workspaces/workspaces.module';
+import { SiteProfilesController } from './site-profiles/controllers/site-profiles.controller';
+import { SiteProfilesService } from './site-profiles/services/site-profiles.service';
+import { SiteProfilesModule } from './site-profiles/site-profiles.module';
 
 
 
@@ -16,8 +18,8 @@ import { WorkspacesModule } from './workspaces/workspaces.module';
   controllers: [AppController, DockerController],
   providers: [AppService, DockerService],
   imports: [
-    SitesModule,
     WorkspacesModule,
+    SiteProfilesModule,
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],

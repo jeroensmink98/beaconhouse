@@ -1,7 +1,7 @@
-import { Site } from "./site.entity";
+import { SiteProfile } from "./site-profile.entity";
 import { Workspace } from "./workspace.entity";
 
-const entities = [Site, Workspace];
+const entities = [Workspace, SiteProfile];
 
-export { Site, Workspace }
+export { Workspace, SiteProfile }
 export default entities;
