@@ -19,6 +19,6 @@ export class WorkspacesService {
     }
 
     getWorkspaceById(id: string): Promise<Workspace> {
-        return this.workspaceRepository.findOneBy({ "workspaceId": id });
+        return this.workspaceRepository.findOneBy({ workspaceId: id });
     }
 }

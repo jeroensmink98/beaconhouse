@@ -1,5 +1,7 @@
-import { Controller, Get, Param } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, UsePipes, ValidationPipe } from "@nestjs/common";
 import { WorkspacesService } from "../services/workspaces.service";
+import { CreateWorkspaceDto } from "../dto/workspaces.dtos";
+import { log } from "console";
 
 @Controller('workspaces')
 export class WorkspacesController {
@@ -14,8 +16,16 @@ export class WorkspacesController {
         return await this.workspacesService.getWorkspaces();
     }
 
-    @Get('id/:id')
-    async getWorkspaceById(@Param('id') id: string) {
+    @Get(':workspaceId')
+    async getWorkspaceById(@Param('workspaceId') id: string) {
         return await this.workspacesService.getWorkspaceById(id);
     }
+
+    @Post('create')
+    @UsePipes(ValidationPipe)
+    async createWorkspace(@Body() createWorkspaceDto: CreateWorkspaceDto) {
+        return await this.workspacesService.createWorkspace(createWorkspaceDto);
+    }
+
+
 }
