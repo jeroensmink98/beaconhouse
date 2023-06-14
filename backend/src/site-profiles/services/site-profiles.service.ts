@@ -15,21 +15,27 @@ export class SiteProfilesService {
     ) { }
 
     // Create
-    async createSiteProfile(createSiteProfileDto: CreateSiteProfilesDto): Promise<SiteProfile> {
+    async createSiteProfile(createSiteProfileDto: CreateSiteProfilesDto, workspaceId: string): Promise<SiteProfile> {
         const siteProfile = new SiteProfile();
         siteProfile.name = createSiteProfileDto.name;
         siteProfile.url = createSiteProfileDto.url;
-        siteProfile.workspace = createSiteProfileDto.workspace;
+
+        const workspace = await this.workspacesService.getWorkspaceById(workspaceId);
+        if (!workspace) {
+            throw new NotFoundException(`Workspace with ID ${workspaceId} not found`);
+        }
+        siteProfile.workspace = workspace;
 
         return this.siteProfileRepository.save(siteProfile);
     }
 
     // Read all
+
     async getSiteProfiles(workspaceId: string): Promise<SiteProfile[]> {
+        console.log('workspaceId', workspaceId);
         return await this.siteProfileRepository
-            .createQueryBuilder("siteProfile")
-            .innerJoin("siteProfile.workspace", "workspace")
-            .where("workspace.workspace_id = :workspaceId", { workspaceId })
+            .createQueryBuilder('siteProfile')
+            .innerJoinAndSelect('siteProfile.workspace', 'workspace', 'workspace.workspaceId = :workspaceId', { workspaceId })
             .getMany();
     }
 

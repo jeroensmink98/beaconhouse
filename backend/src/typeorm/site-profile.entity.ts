@@ -1,8 +1,8 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from "typeorm";
 import { Workspace } from "./workspace.entity";
 
-@Entity()
 @Unique(['name', 'workspace'])
+@Entity()
 export class SiteProfile {
     @PrimaryGeneratedColumn('uuid', { name: 'site_profile_id' })
     siteProfileId: string;
@@ -10,6 +10,7 @@ export class SiteProfile {
     @Column({
         nullable: false,
     })
+
     name: string;
 
     @Column({

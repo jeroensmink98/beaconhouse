@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, NotFoundException, Param, Post, Put, Use
 import { SiteProfilesService } from '../services/site-profiles.service';
 import { CreateSiteProfilesDto } from '../dto/site-profiles-dtos';
 import { WorkspacesService } from 'src/workspaces/services/workspaces.service';
+import { log } from 'console';
 
 @Controller('workspaces/:workspaceId/site-profiles')
 export class SiteProfilesController {
@@ -22,14 +23,11 @@ export class SiteProfilesController {
         if (!workspace) {
             throw new NotFoundException(`Workspace with ID ${workspaceId} not found`);
         }
-
-        // Add logic to set the workspaceId of the SiteProfile based on the 'workspaceId' route parameter
-        return await this.siteProfilesService.createSiteProfile(createSiteProfileDto);
+        return await this.siteProfilesService.createSiteProfile(createSiteProfileDto, workspaceId);
     }
 
     @Get()
     async getSiteProfiles(@Param('workspaceId') workspaceId: string) {
-        // Add logic to fetch only SiteProfiles that belong to the 'workspaceId'
         return await this.siteProfilesService.getSiteProfiles(workspaceId);
     }
 
