@@ -1,5 +1,6 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { SiteProfile } from "./site-profile.entity";
+import { User } from "./users.entity";
 
 @Entity()
 export class Workspace {
@@ -19,6 +20,9 @@ export class Workspace {
 
     @OneToMany(() => SiteProfile, siteProfile => siteProfile.workspace)
     siteProfiles: SiteProfile[];
+
+    @OneToMany(() => User, user => user.workspace)
+    users: User[];
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
     createdAt: Date;

@@ -11,6 +11,9 @@ import { WorkspacesModule } from './workspaces/workspaces.module';
 import { SiteProfilesController } from './site-profiles/controllers/site-profiles.controller';
 import { SiteProfilesService } from './site-profiles/services/site-profiles.service';
 import { SiteProfilesModule } from './site-profiles/site-profiles.module';
+import { UsersService } from './users/services/users.service';
+import { UsersController } from './users/controllers/users.controller';
+import { UsersModule } from './users/users.module';
 
 
 
@@ -37,6 +40,7 @@ import { SiteProfilesModule } from './site-profiles/site-profiles.module';
       }),
       inject: [ConfigService],
     }),
+    UsersModule,
   ],
 })
 export class AppModule { }
