@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "8855b261-0f4c-4880-8cad-91a82c900793",
+		"name": "Beaconhouse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6147285"
+	},
+	"item": [
+		{
+			"name": "Docker",
+			"item": [
+				{
+					"name": "Docker Images",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/docker/images",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"docker",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Docker Containers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/docker/containers",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"docker",
+								"containers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Docker Container Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"unlighthouse:1.0\",\r\n    \"name\": \"unlighthouse\",\r\n    \"autoRemove\": true,\r\n    \"env\": \"SITE=https://www.devopsfrontier.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/docker/containers/create",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"docker",
+								"containers",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Docker Container Run",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"containerNameOrId\": \"unlighthouse\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/docker/containers/run",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"docker",
+								"containers",
+								"run"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Workspaces",
+			"item": [
+				{
+					"name": "Get Workspaces",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/workspaces",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"workspaces"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Workspace",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/workspaces?id=111b5a8f-51e1-4699-8d47-142980c6bf69",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"workspaces"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "111b5a8f-51e1-4699-8d47-142980c6bf69"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Workspace",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Prod Workspace\",\r\n    \"organization\": \"Sminkware.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/workspaces/create",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"workspaces",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SiteProfiles",
+			"item": [
+				{
+					"name": "Get SiteProfiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/workspaces/{{workspace_id}}/site-profiles",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"workspaces",
+								"{{workspace_id}}",
+								"site-profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create SiteProfile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Youtube Prod\",\r\n    \"url\": \"https://www.youtube.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/workspaces/{{workspace_id}}/site-profiles",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"workspaces",
+								"{{workspace_id}}",
+								"site-profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update SiteProfile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Youtube Dev\",\r\n    \"url\": \"https://www.youtube.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/workspaces/83aa6b95-8ab9-4eaa-a536-6ea88cdce520/site-profiles/63e04af1-b2e9-43ec-a7d1-b51d6027d0ab",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"workspaces",
+								"83aa6b95-8ab9-4eaa-a536-6ea88cdce520",
+								"site-profiles",
+								"63e04af1-b2e9-43ec-a7d1-b51d6027d0ab"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "localhost"
+		},
+		{
+			"key": "port",
+			"value": "8080"
+		},
+		{
+			"key": "workspace_id",
+			"value": "83aa6b95-8ab9-4eaa-a536-6ea88cdce520"
+		}
+	]
+}
