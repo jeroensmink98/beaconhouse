@@ -14,6 +14,7 @@ import { SiteProfilesModule } from './site-profiles/site-profiles.module';
 import { UsersService } from './users/services/users.service';
 import { UsersController } from './users/controllers/users.controller';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -41,6 +42,7 @@ import { UsersModule } from './users/users.module';
       inject: [ConfigService],
     }),
     UsersModule,
+    AuthModule,
   ],
 })
 export class AppModule { }

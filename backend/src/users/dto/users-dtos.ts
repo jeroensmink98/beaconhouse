@@ -22,6 +22,22 @@ export class CreateUserDto {
     @IsString()
     @MinLength(8)
     userPassword: string;
+
+    @IsNotEmpty()
+    @IsString()
+    workspaceId: string;
+}
+
+export class SignInUserDto {
+    @IsNotEmpty()
+    @IsString()
+    @MinLength(2)
+    userEmail: string;
+
+    @IsNotEmpty()
+    @IsString()
+    @MinLength(8)
+    userPassword: string;
 }
 
 export class UpdateUserDto {

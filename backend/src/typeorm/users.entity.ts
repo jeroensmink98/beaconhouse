@@ -1,9 +1,9 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Workspace } from "./workspace.entity";
 
 @Entity()
 export class User {
-    @PrimaryColumn(('uuid'))
+    @PrimaryGeneratedColumn(('uuid'))
     userId: string;
 
     @Column({
