@@ -26,6 +26,7 @@
     "@nestjs/jwt": "^10.1.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^7.0.3",
     "@nestjs/typeorm": "^9.0.1",
     "@types/dockerode": "^3.3.18",
     "@youba/nestjs-dbvalidator": "^1.1.3",
