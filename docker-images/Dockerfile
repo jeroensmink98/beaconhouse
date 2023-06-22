@@ -20,10 +20,7 @@ RUN chown root:root /usr/lib/chromium/chrome-sandbox && \
     chmod 4755 /usr/lib/chromium/chrome-sandbox
 
 # Add user so we don't need --no-sandbox.
-RUN addgroup -S unlighthouse && adduser -S -G unlighthouse unlighthouse \
-    && mkdir -p /home/unlighthouse/Downloads /app \
-    && chown -R unlighthouse:unlighthouse /home/unlighthouse \
-    && chown -R unlighthouse:unlighthouse /app
+RUN addgroup -S unlighthouse && adduser -S -G unlighthouse unlighthouse
 
 # Run everything after as non-privileged user.
 USER unlighthouse
@@ -31,4 +28,4 @@ WORKDIR /home/unlighthouse
 
 ADD unlighthouse.config.ts unlighthouse.config.ts 
 
-ENTRYPOINT npx unlighthouse --site ${SITE}
+ENTRYPOINT npx unlighthouse --site ${SITE} --output-path ./output
