@@ -28,4 +28,4 @@ WORKDIR /home/unlighthouse
 
 ADD unlighthouse.config.ts unlighthouse.config.ts 
 
-ENTRYPOINT npx unlighthouse --site ${SITE} --output-path ./output
+ENTRYPOINT npx unlighthouse --site ${SITE}

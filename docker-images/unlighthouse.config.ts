@@ -1,4 +1,5 @@
-import childProcess from 'child_process';
+/// <reference types="unlighthouse" />
+import { defineConfig } from 'unlighthouse'
 
 export default {
     puppeteerOptions: {
@@ -7,6 +8,7 @@ export default {
     server: {
         open: false,
     },
+    debug: true,
     ci: {
         buildStatic: true
     },
@@ -15,12 +17,6 @@ export default {
         // Task completed
         'task-completed': async (task) => {
             console.log(`Task completed: ${task.url}`);
-            // Run a command
-            const child = childProcess.spawn('echo', ['Hello, world!'], {
-                detached: true,
-                stdio: 'inherit'  // change this to 'inherit' if you want to see the command output
-            });
-            child.unref();
         },
 
         // Exit the node process when the worker is finished

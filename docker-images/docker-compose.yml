@@ -1,0 +1,15 @@
+version: "3"
+services:
+  unlighthouse:
+    container_name: unlighthouse
+    image: unlighthouse:1.0
+    environment:
+      - SITE=devopsfrontier.com
+    ports:
+      - 5678:5678
+    volumes:
+      - ./unlighthouse.config.ts:/home/unlighthouse/unlighthouse.config.ts
+      - reports:/home/unlighthouse/reports
+
+volumes:
+  reports:
