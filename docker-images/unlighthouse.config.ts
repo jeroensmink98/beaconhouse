@@ -1,5 +1,3 @@
-/// <reference types="unlighthouse" />
-import { defineConfig } from 'unlighthouse'
 
 export default {
     puppeteerOptions: {
@@ -21,6 +19,7 @@ export default {
 
         // Exit the node process when the worker is finished
         'worker-finished': async () => {
+            console.log('Worker finished');
             process.exit(0);
         },
     }

@@ -2,7 +2,7 @@
 
 # Define the image name and tag
 IMAGE_NAME="unlighthouse"
-TAG="1.0"
+TAG="2.3"
 
 # Build the Docker container
 docker build -t "$IMAGE_NAME:$TAG" .
